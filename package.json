@@ -1,0 +1,45 @@
+{
+  "name": "organic-flush-legacy-cells",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-coverage": "jest --coverage"
+  },
+  "engines": {
+    "node": "8.12.0"
+  },
+  "author": "Boris Filipov",
+  "license": "MIT",
+  "dependencies": {
+    "organic-alchemy-started-cells-info": "node-organic/organic-alchemy-started-cells-info",
+    "organic-watch-json-dir": "node-organic/organic-watch-json-dir",
+    "angelscripts-install-as-daemon": "node-organic/angelscripts-install-as-daemon",
+    "angelabilities-package-scripts": "^0.1.0",
+    "organic-angel": "^0.3.2",
+    "organic-dna-loader": "^1.5.1",
+    "organic-stem-cell": "^2.0.3",
+    "semver-diff": "^2.1.0"
+  },
+  "bin": {
+    "organic-flush-legacy-cells": "./bin/organic-flush-legacy-cells.js"
+  },
+  "devDependencies": {
+    "organic-plasma": "^2.1.0",
+    "jest": "^23.6.0",
+    "eslint": "^4.18.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-organic/organic-flush-legacy-cells.git"
+  },
+  "bugs": {
+    "url": "https://github.com/node-organic/organic-flush-legacy-cells/issues"
+  },
+  "homepage": "https://github.com/node-organic/organic-flush-legacy-cells#readme"
+}

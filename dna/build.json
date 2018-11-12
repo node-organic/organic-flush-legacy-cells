@@ -1,0 +1,14 @@
+{
+  "flush-cells": {
+    "source": "./organelles/flush-cells"
+  },
+  "organic-watch-json-dir": {
+    "source": "organic-watch-json-dir",
+    "location": "/home/node/deployments",
+    "emit": {
+      "onChangeFile": "onCellMitosisComplete",
+      "onNewFile": "onCellMitosisComplete",
+      "onFoundFile": "onCellMitosisComplete"
+    }
+  }
+}
