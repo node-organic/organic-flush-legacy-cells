@@ -11,14 +11,15 @@ module.exports = class {
   }
   onCellMitosisComplete (c, next) {
     let cellInfo = c.cellInfo
+    cellInfo.mitosisPath = c.path
     this.startedCells.forEach((legacy_cell) => {
       if (legacy_cell.name === cellInfo.name &&
         is_version_legacy(legacy_cell.mitosis.apoptosis.versionConditions, legacy_cell.version, cellInfo.version)) {
         console.info('flushing', legacy_cell)
         this.startedCells.remove(legacy_cell)
-        if (c.path) {
-          fs.unlink(c.path, (err) => {
-            if (err) console.info(err, c.path)
+        if (legacy_cell.mitosisPath) {
+          fs.unlink(legacy_cell.mitosisPath, (err) => {
+            if (err) console.info(err, legacy_cell.mitosisPath)
           })
         }
       }
