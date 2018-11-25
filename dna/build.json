@@ -1,10 +1,11 @@
 {
   "flush-cells": {
-    "source": "./organelles/flush-cells"
+    "source": "./organelles/flush-cells",
+    "runningDeploymensLocation": "/home/node/deployments/running",
   },
   "organic-watch-json-dir": {
     "source": "organic-watch-json-dir",
-    "location": "/home/node/deployments",
+    "location": "/home/node/deployments/enabled",
     "emit": {
       "dataPropertyName": "cellInfo",
       "onChangeFile": "onCellMitosisComplete",

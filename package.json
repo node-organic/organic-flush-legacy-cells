@@ -18,7 +18,7 @@
   "dependencies": {
     "organic-alchemy-started-cells-info": "^1.0.1",
     "organic-watch-json-dir": "^1.0.2",
-    "angelscripts-install-as-daemon": "^1.0.1",
+    "angelscripts-install-as-daemon": "^1.1.1",
     "angelabilities-package-scripts": "^0.1.0",
     "organic-angel": "^0.3.2",
     "organic-dna-loader": "^1.5.1",
