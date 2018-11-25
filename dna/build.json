@@ -1,7 +1,7 @@
 {
   "flush-cells": {
     "source": "./organelles/flush-cells",
-    "runningDeploymensLocation": "/home/node/deployments/running",
+    "runningDeploymensLocation": "/home/node/deployments/running"
   },
   "organic-watch-json-dir": {
     "source": "organic-watch-json-dir",
