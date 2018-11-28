@@ -46,7 +46,8 @@ module.exports = class {
       [
         cellInfo.name,
         cellInfo.version,
-        cellInfo.mitosis.mode
-      ].join('-') + '.json')
+        cellInfo.mitosis.mode,
+        cellInfo.index || ''
+      ].filter(v => v).join('-') + '.json')
   }
 }
