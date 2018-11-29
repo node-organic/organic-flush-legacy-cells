@@ -14,6 +14,7 @@ module.exports = class {
   }
   onCellMitosisOffspring (c) {
     let cellInfo = c.cellInfo
+    console.info('got offspring', cellInfo.name)
     this.flushOnOffspring.forEach((legacy_cell) => {
       if (legacy_cell.name === cellInfo.name) {
         this.flushCell(legacy_cell)
@@ -28,6 +29,7 @@ module.exports = class {
       if (legacy_cell.name === cellInfo.name &&
         this.is_version_legacy(legacyCellConditions, legacy_cell.version, cellInfo.version)) {
         if (legacy_cell.mitosis.flushOnOffspring) {
+          console.info('delay flush to running offspring', legacy_cell.name)
           this.flushOnOffspring.add(legacy_cell)
         } else {
           this.flushCell(legacy_cell)
