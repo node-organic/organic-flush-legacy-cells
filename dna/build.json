@@ -9,12 +9,14 @@
     "emit": {
       "dataPropertyName": "cellInfo",
       "onChangeFile": "onCellMitosisComplete",
-      "onNewFile": "onCellMitosisComplete"
+      "onNewFile": "onCellMitosisComplete",
+      "ready": "enabledWatching"
     }
   },
   "organic-watch-json-dir": {
     "source": "organic-watch-json-dir",
     "location": "/home/node/deployments/running",
+    "reactOn": "enabledWatching",
     "emit": {
       "dataPropertyName": "cellInfo",
       "onNewFile": "onCellMitosisOffspring"
