@@ -14,7 +14,7 @@ module.exports = class {
   }
   onCellMitosisOffspring (c) {
     let cellInfo = c.cellInfo
-    console.info('got offspring', cellInfo.name)
+    console.info('mitosis offspring', cellInfo.name)
     this.flushOnOffspring.forEach((legacy_cell) => {
       if (legacy_cell.name === cellInfo.name) {
         this.flushCell(legacy_cell)
@@ -23,6 +23,7 @@ module.exports = class {
   }
   onCellMitosisComplete (c) {
     let cellInfo = c.cellInfo
+    console.info('mitosis complete', cellInfo.name)
     cellInfo.deploymentEnabledPath = c.path
     this.startedCells.forEach((legacy_cell) => {
       let legacyCellConditions = legacy_cell.mitosis.apoptosis.versionConditions
