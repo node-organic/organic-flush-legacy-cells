@@ -18,7 +18,7 @@
     "location": "/home/node/deployments/running",
     "emit": {
       "dataPropertyName": "cellInfo",
-      "onNewFile": "onCellMitosisOffspring",
+      "onNewFile": "onCellMitosisOffspring"
     }
   }
 }
