@@ -8,26 +8,44 @@ module.exports = class {
     this.plasma = plasma
     this.dna = dna
     this.plasma.on('onCellMitosisComplete', this.onCellMitosisComplete, this)
+    this.plasma.on('onCellMitosisOffspring', this.onCellMitosisOffspring, this)
     this.startedCells = new StartedCells()
+    this.flushOnOffspring = new StartedCells()
   }
-  onCellMitosisComplete (c, next) {
+  onCellMitosisOffspring (c) {
+    let cellInfo = c.cellInfo
+    this.flushOnOffspring.forEach((legacy_cell) => {
+      if (legacy_cell.name === cellInfo.name) {
+        this.flushCell(legacy_cell)
+      }
+    })
+  }
+  onCellMitosisComplete (c) {
     let cellInfo = c.cellInfo
     cellInfo.deploymentEnabledPath = c.path
-    this.startedCells.forEach(async (legacy_cell) => {
+    this.startedCells.forEach((legacy_cell) => {
       let legacyCellConditions = legacy_cell.mitosis.apoptosis.versionConditions
       if (legacy_cell.name === cellInfo.name &&
         this.is_version_legacy(legacyCellConditions, legacy_cell.version, cellInfo.version)) {
-        console.info('flushing', legacy_cell)
-        this.startedCells.remove(legacy_cell)
-        if (legacy_cell.deploymentEnabledPath) {
-          await this.safeDelete(legacy_cell.deploymentEnabledPath)
-          if (legacy_cell.mitosis.zygote) {
-            await this.safeDelete(this.getDeploymentRunningPath(legacy_cell))
-          }
+        if (legacy_cell.mitosis.flushOnOffspring) {
+          this.flushOnOffspring.add(legacy_cell)
+        } else {
+          this.flushCell(legacy_cell)
         }
       }
     })
     this.startedCells.add(cellInfo)
+  }
+  async flushCell (legacy_cell) {
+    console.info('flushing', legacy_cell)
+    this.startedCells.remove(legacy_cell)
+    this.flushOnOffspring.remove(legacy_cell)
+    if (legacy_cell.deploymentEnabledPath) {
+      await this.safeDelete(legacy_cell.deploymentEnabledPath)
+      if (legacy_cell.mitosis.zygote) {
+        await this.safeDelete(this.getDeploymentRunningPath(legacy_cell))
+      }
+    }
   }
   is_version_legacy (versionConditions, existing_version, new_version) {
     let diffValue = semverDiff(existing_version, new_version)
